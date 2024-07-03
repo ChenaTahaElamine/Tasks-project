@@ -13,7 +13,7 @@ return new class extends Migration
             $table->id();
             $table->string('titre');
             $table->string('description');
-            $table->enum('status', ['en-attent', 'applique', 'Pas-applique']);
+            $table->enum('status', ['applique', 'Pas-applique'])->default("Pas-applique");
             $table->foreignId('id_user')->constrained('users', 'id');
             $table->timestamps();
         });

@@ -24,18 +24,27 @@
                                         <td>{!! $task->titre !!}</td>
                                         <td>{!! $task->description !!}</td>
                                         <td>
-                                            {!! $task->status !!}
+                                            {!! $task->status  !!}
                                             @if ($task->status == 'Pas-applique')
-                                                <a href="{{ route('task.edit', ['tasks' => $task->id]) }}"
-                                                    class="btn btn-success" style="margin-left: 15px">
-                                                    Appliquer
-                                                </a>
+                                                
+                                                <form action="{{ route('task.update', ['tasks' => $task->id,"new_stauts"=>"applique"]) }}"
+                                                    method="POST" style="display:inline;">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    {{-- <input type="hidden" name="new_status" value="applique"> --}}
+                                                    <button type="submit" class="btn btn-success"
+                                                        style="margin-left: 15px">Appliquer</button>
+                                                </form>
                                             @endif
 
-                                            <a href="{{ route('task.destroy', ['tasks' => $task->id]) }}"
-                                                class="btn btn-danger" style="margin-left: 15px">
-                                                Supprimer
-                                            </a>
+                                            <form action="{{ route('task.destroy', ['tasks' => $task->id]) }}"
+                                                method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger"
+                                                    style="margin-left: 15px">Supprimer</button>
+                                            </form>
+
                                         </td>
                                     </tr>
                                 @endforeach

@@ -15,16 +15,17 @@ class TasksSeeder extends Seeder
      */
     public function run(): void
     {
-        // for ($i=0; $i < 10; $i++) { 
+        // for ($i = 0; $i < 10; $i++) {
         //     DB::table('tasks')->insert([
-        //     'titre' => Str::random(10),
-        //     'description' => Str::random(20),
-        //     "status"=>"Pas-applique",
-        //     'id_user' => 1,
-        //     "created_at"=>now()
-        // ]);
+        //         'titre' => Str::random(10),
+        //         'description' => Str::random(20),
+        //         "status" => "Pas-applique",
+        //         'id_user' => 1,
+        //         "created_at" => now()
+        //     ]);
+        // }
 
-        
+
         DB::table('tasks')->insert([
             'titre' => "exposer",
             'description' => "exposer de madam agoun",
@@ -32,7 +33,7 @@ class TasksSeeder extends Seeder
             'id_user' => 1,
             "created_at"=>now()
         ]);
-        
-        
+
+
     }
 }

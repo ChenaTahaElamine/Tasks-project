@@ -10,15 +10,16 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware("auth");
 
-Route::prefix("/tasks")->group(function () {
+Route::prefix("/tasks")->middleware("auth")->group(function () {
 
-    Route::get("/add", [TasksController::class, "create"])->name("task.create");//[x]
-    Route::post("/ajoute", [TasksController::class, "store"])->name("task.store");//[]
-    Route::get("/modifer/{tasks}", [TasksController::class, "edit"])->name("task.edit");//[x]
-    Route::put("/modife/{tasks}", [TasksController::class, "update"])->name("task.update");//[]
-    Route::delete("/suprimer/{tasks}", [TasksController::class, "destroy"])->name("task.destroy");//[]
-    Route::get("/afficher/{tasks}", [TasksController::class, "show"])->name("task.show");//[x]
+    Route::get("/add", [TasksController::class, "create"])->name("task.create");
+    Route::post("/ajoute", [TasksController::class, "store"])->name("task.store");
+    Route::get("/modifer/{tasks}", [TasksController::class, "edit"])->name("task.edit");
+    Route::put("/modife/{tasks}/{new_stauts}", [TasksController::class, "update"])->name("task.update");
+    Route::delete("/suprimer/{tasks}", [TasksController::class, "destroy"])->name("task.destroy");
+    Route::get("/afficher/{tasks}", [TasksController::class, "show"])->name("task.show");
+    Route::get("/mon-profile",function(){return view("layouts.gestion-des-tasks.profile");})->name("profile");
 
 });
