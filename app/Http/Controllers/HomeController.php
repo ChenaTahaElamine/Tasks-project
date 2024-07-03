@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tasks;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $tasks = Tasks::with('utilisateur')->latest()->paginate(5);
+        return view('layouts.gestion-des-tasks.index',compact("tasks"));
     }
 }
