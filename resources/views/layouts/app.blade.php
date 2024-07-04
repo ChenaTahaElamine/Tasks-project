@@ -18,6 +18,7 @@
     {{-- <link rel="stylesheet" href="{{ asset('assets/styles/login-style.css') }}"> --}}
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
 </head>
 
 <body>
@@ -56,8 +57,14 @@
                                     </li>
                                 @endif
                             @else
+                                
                                 <li class="nav-item">
-                                    <a href="{{ route('task.create') }}" class="nav-link">
+                                    <a href="{{ route('home') }}" class="nav-link ">
+                                        page d'accueil
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('task.create') }}" class="nav-link ">
                                         Ajouter un task
                                     </a>
                                 </li>
@@ -66,11 +73,7 @@
                                         Mon profile
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        Paramètres
-                                    </a>
-                                </li>
+                                
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

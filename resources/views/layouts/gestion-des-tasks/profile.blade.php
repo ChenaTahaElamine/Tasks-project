@@ -43,8 +43,8 @@
                                         {{-- <button type="button" data-mdb-button-init data-mdb-ripple-init
                                             class="btn btn-outline-primary me-1 flex-grow-1">Page accueil</button> --}}
                                         
-                                        <button type="button" data-mdb-button-init data-mdb-ripple-init
-                                            class="btn btn-primary flex-grow-1">Modifer</button>
+                                        {{-- <button type="button" data-mdb-button-init data-mdb-ripple-init
+                                            class="btn btn-primary flex-grow-1">Modifer</button> --}}
                                     </div>
                                 </div>
                             </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tasks;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $tasks = Tasks::with('utilisateur')->latest()->paginate(5);
+        $tasks = Tasks::where("id_user",Auth::user()->id)->with('utilisateur')->latest()->paginate(5);
         return view('layouts.gestion-des-tasks.index',compact("tasks"));
     }
 }

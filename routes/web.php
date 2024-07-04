@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\Route;
 //     return redirect()->route();
 // });
 
-Auth::routes();
+Auth::routes(["verify"=>true]);
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware("auth");
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware("verified");
 
-Route::prefix("/tasks")->middleware("auth")->group(function () {
+Route::prefix("/tasks")->middleware("verified")->group(function () {
 
     Route::get("/add", [TasksController::class, "create"])->name("task.create");
     Route::post("/ajoute", [TasksController::class, "store"])->name("task.store");

@@ -3,11 +3,19 @@
 @section('content')
     <div class="container">
         <div class="row">
-
-            <div class="card">
-                <div class="card-body">
-
-                    @if (count($tasks) > 0)
+            @if (count($tasks) > 0)
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col">
+                                <div class="text-center">
+                                    <h3>Ce sont toutes vos tâches monsieur {!! Auth::user()->nom !!} {!! Auth::user()->prenom !!}</h3>
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="card-body">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -24,10 +32,10 @@
                                         <td>{!! $task->titre !!}</td>
                                         <td>{!! $task->description !!}</td>
                                         <td>
-                                            {!! $task->status  !!}
+                                            {!! $task->status !!}
                                             @if ($task->status == 'Pas-applique')
-                                                
-                                                <form action="{{ route('task.update', ['tasks' => $task->id,"new_stauts"=>"applique"]) }}"
+                                                <form
+                                                    action="{{ route('task.update', ['tasks' => $task->id, 'new_stauts' => 'applique']) }}"
                                                     method="POST" style="display:inline;">
                                                     @csrf
                                                     @method('PUT')
@@ -35,6 +43,8 @@
                                                     <button type="submit" class="btn btn-success"
                                                         style="margin-left: 15px">Appliquer</button>
                                                 </form>
+                                            @else
+                                                <div class="" style="display:inline;margin-right: 137px"></div>
                                             @endif
 
                                             <form action="{{ route('task.destroy', ['tasks' => $task->id]) }}"
@@ -50,32 +60,37 @@
                                 @endforeach
                             </tbody>
                         </table>
-                    @else
+
+                    </div>
+                    {{-- @php
+                        $links = $tasks->links();
+
+                    @endphp --}}
+
+
+                    {{-- <div class="card-footer"> --}}
+                    <div class="container-fluid ">
                         <div class="text-center">
-                            <br><br>
-                            <h1>
-                                Il semble qu'il n'y ait pas encore de task
-                            </h1>
-                            <br><br>
+                            {{ $tasks->links() }}
                         </div>
-                    @endif
+                    </div>
 
+                    {{-- </div> --}}
 
 
                 </div>
-                <div class="card-footer">
-                    @empty($tasks->links())
-                        {{-- $variable n'existe pas ou est vide --}}
-                    @else
-                        {{-- $variable existe et n'est pas vide --}}
-                        <div class="card-footer">
-                            <div class="text-center">
-                                {{ $tasks->links() }}
-                            </div>
-                        </div>
-                    @endempty
+            @else
+                <div class="text-center">
+                    <br><br>
+                    <h1>
+                        Il semble qu'il n'y ait pas encore de task
+                    </h1>
+                    <br><br>
                 </div>
-            </div>
+            @endif
+            {{--  --}}
+
+            {{--  --}}
         </div>
     </div>
 
