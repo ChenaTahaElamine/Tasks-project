@@ -27,11 +27,11 @@
                                         @endphp
                                         <div>
                                             <p class="small text-muted mb-1">Tasks appliquer</p>
-                                            <p class="mb-0">{{ $appliqueCount }}</p>
+                                            <p class="mb-0" style="color: black">{{ $appliqueCount }}</p>
                                         </div>
                                         <div class="px-3">
                                             <p class="small text-muted mb-1">Tasks pas appliquer</p>
-                                            <p class="mb-0">{!! $otherCount !!}</p>
+                                            <p class="mb-0" style="color: black">{!! $otherCount !!}</p>
                                         </div>
 
                                     </div>
